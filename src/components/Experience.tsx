@@ -22,36 +22,34 @@ const Experience = () => {
     },
     {
       company: "Deloitte (Hashedin)",
-      title: "Software Engineer II",
-      duration: "April 2023 - January 2024",
-      location: "Bengaluru, India",
-      responsibilities: [
-        "Developed reusable React components for client products using client's design system and used React storybook library for documentation.",
-        "Development, Code maintenance, Code reviews, and Testing.",
-        "Trained 60+ new joiners and interns."
+      positions: [
+        {
+          title: "Software Engineer II",
+          duration: "April 2023 - January 2024",
+          responsibilities: [
+            "Developed reusable React components for client products using client's design system and used React storybook library for documentation.",
+            "Development, Code maintenance, Code reviews, and Testing.",
+            "Trained 60+ new joiners and interns."
+          ]
+        },
+        {
+          title: "Software Engineer I",
+          duration: "July 2021 - March 2023",
+          responsibilities: [
+            "Contributed to the firm's internal product to organize and automate the hiring process using ReactJS, Redux, and Redux Saga.",
+            "Designed and developed end-to-end features for efficient data handling and management, improving hiring processes and boosting HR efficiency by 50%."
+          ]
+        },
+        {
+          title: "Software Engineer Intern",
+          duration: "March 2021 - June 2021",
+          responsibilities: [
+            "Developed progressive web application (PWA) using ReactJS and Redux for food recommendation system where users can make diet charts, track calories, order the recommended food item from restaurants or buy the required ingredients."
+          ]
+        }
       ],
-      tech: "ReactJS, Redux, Jest, Storybook, HTML, CSS"
-    },
-    {
-      company: "Deloitte (Hashedin)",
-      title: "Software Engineer I",
-      duration: "July 2021 - March 2023",
       location: "Bengaluru, India",
-      responsibilities: [
-        "Contributed to the firm's internal product to organize and automate the hiring process using ReactJS, Redux, and Redux Saga.",
-        "Designed and developed end-to-end features for efficient data handling and management, improving hiring processes and boosting HR efficiency by 50%."
-      ],
-      tech: "ReactJS, Redux, Redux-Saga, HTML, CSS"
-    },
-    {
-      company: "Deloitte (Hashedin)",
-      title: "Software Engineer Intern",
-      duration: "March 2021 - June 2021",
-      location: "Bengaluru, India",
-      responsibilities: [
-        "Developed progressive web application (PWA) using ReactJS and Redux for food recommendation system where users can make diet charts, track calories, order the recommended food item from restaurants or buy the required ingredients."
-      ],
-      tech: "ReactJS, Redux, PWA, HTML, CSS"
+      tech: "ReactJS, Redux, Redux-Saga, Jest, Storybook, HTML, CSS"
     },
     {
       company: "Coding Ninjas",
@@ -100,28 +98,65 @@ const Experience = () => {
               }`}
               style={{ display: activeTabIndex === index ? 'block' : 'none' }}
             >
-              <h3 className="text-xl text-slate-light font-medium">
-                {experience.title}{' '}
-                <span className="text-teal">@ {experience.company}</span>
-              </h3>
-              
-              <p className="font-mono text-sm text-slate">
-                {experience.duration} | {experience.location}
-              </p>
-              
-              <ul className="space-y-3">
-                {experience.responsibilities.map((item, i) => (
-                  <li key={i} className="flex">
-                    <span className="text-teal mr-2">▹</span>
-                    <span className="text-slate flex-1">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <p className="text-slate">
-                <span className="text-teal font-mono text-sm">Tech Stack:</span>{' '}
-                {experience.tech}
-              </p>
+              {experience.positions ? (
+                // Deloitte with multiple positions
+                <div>
+                  {experience.positions.map((position, posIndex) => (
+                    <div key={posIndex} className={posIndex > 0 ? "mt-8" : ""}>
+                      <h3 className="text-xl text-slate-light font-medium">
+                        {position.title}{' '}
+                        <span className="text-teal">@ {experience.company}</span>
+                      </h3>
+                      
+                      <p className="font-mono text-sm text-slate mt-2">
+                        {position.duration} | {experience.location}
+                      </p>
+                      
+                      <ul className="space-y-3 mt-4">
+                        {position.responsibilities.map((item, i) => (
+                          <li key={i} className="flex">
+                            <span className="text-teal mr-2">▹</span>
+                            <span className="text-slate flex-1">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      
+                      {posIndex === experience.positions.length - 1 && (
+                        <p className="text-slate mt-4">
+                          <span className="text-teal font-mono text-sm">Tech Stack:</span>{' '}
+                          {experience.tech}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                // Regular company with single position
+                <>
+                  <h3 className="text-xl text-slate-light font-medium">
+                    {experience.title}{' '}
+                    <span className="text-teal">@ {experience.company}</span>
+                  </h3>
+                  
+                  <p className="font-mono text-sm text-slate">
+                    {experience.duration} | {experience.location}
+                  </p>
+                  
+                  <ul className="space-y-3">
+                    {experience.responsibilities.map((item, i) => (
+                      <li key={i} className="flex">
+                        <span className="text-teal mr-2">▹</span>
+                        <span className="text-slate flex-1">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <p className="text-slate">
+                    <span className="text-teal font-mono text-sm">Tech Stack:</span>{' '}
+                    {experience.tech}
+                  </p>
+                </>
+              )}
             </div>
           ))}
         </div>

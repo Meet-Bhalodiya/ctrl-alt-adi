@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="py-6 px-6 text-center text-slate">
       <div className="flex flex-col items-center">
         <p className="mb-2 text-sm">
-          Designed & Built by Supriya Galbale
+          Made with <span className="text-red-500">♥</span> by Adi
         </p>
         <a 
           href="https://github.com/supriyagalbale"
