@@ -3,16 +3,11 @@ const Footer = () => {
     <footer className="py-6 px-6 text-center text-slate">
       <div className="flex flex-col items-center">
         <p className="mb-2 text-sm">
-          Made with <span className="text-red-500">♥</span> by Adi
+          Designed & Built by Supriya Galbale
         </p>
-        <a 
-          href="https://github.com/supriyagalbale"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs hover:text-teal transition-colors font-mono"
-        >
-          @supriyagalbale
-        </a>
+        <p className="text-xs font-mono">
+          © 2025 All Rights Reserved
+        </p>
       </div>
     </footer>
   );
